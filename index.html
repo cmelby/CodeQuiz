@@ -19,25 +19,35 @@
 <a id="high-score" class="navbar-brand" href="#">View HighScore</a>
 <div id="tremaining"></div>
 </nav> 
-<!---create multiple div sections that will be set to "hide" and displayed in the js file as none until triggered-->
+<!--main container-->
 <div class="container">
 <form>
     <div class="form row justify-content-center">
         <div class="col-sm-6 md-6 text-center">
-            <div id="start-btn">
+            <div id="start-btn"> <!--start button-->
                 <button value="Click" type="button" class="btn btn-success btn-lg">Start Quiz</button>
                 <p>Click the start button to begin your quiz. Your score will eb determined by how many questions you've answered with the time you've answered them.</p>
             </div>
         </div>
    </div>
+     <!--Questions & answers -->
     <div id="qa" class="form row hide"><span id="questions-asked"></span> 
       <ul id="answers">
          <!-- <button type="button" class="btn btn-primary btn-lg"></button> -->
          <!-- class="list-group-flush" -->
       </ul>
     </div>
-
 </form>
+   <!---user input--->
+<form class="user-form">
+    <div class="form row justify-content-center">
+        <div class="col-sm-6 md-6 text-center">
+            <input type="text" placeholder="Enter Initials" name="user-input" id="user-input" />
+            <button id="submit">submit</button>
+        </div>
+    </div>
+</form>
+
 </div>
 
 
