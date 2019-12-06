@@ -62,25 +62,17 @@ function renderqa() {
     var li = document.createElement("li");
     li.innerHTML = "<button class='btn-primary btn-lg mb-2'>" + questions[qCount].choices[i] + "</button>";
     answersEl.appendChild(li);
-    
 
   }
   qCount++;
+  if (qCount > questions.length) {
+    storeUser();
+  }
 }
 
- // li.addEventListener("click", function(event) {
-
-  //   if (event.target.innerHTML !==questions[qCount].answer) {
-  //     event.stopPropagation();
-  //     console.log("No");
-  //   } else if  (event.target.innerHTML === questions[qCount].answer) {
-  //       event.stopPropagation();
-  //     console.log("you goooo ddawg");
-  //   };
-  //   });
 
 //------create funciton to grab user input-----//
-var userForm = document.querySelector("#user-form");
+var userForm = document.querySelector(".user-form");
 var userInput = document.querySelector("#user-input");
 var user = [];
 
@@ -96,28 +88,40 @@ userForm.addEventListener("submit", function(event) {
   event.preventDefault();
 
   var userText = userInput.value.trim();
-  userText.push(user);
+  user.push(userText);
 
-  storeUser();
+ 
 });
 
 //--store the answers clicked -------------------------//
 
-// When a element inside of the todoList is clicked...
-todoList.addEventListener("click", function(event) {
-  var element = event.target;
+// // When a element inside of the todoList is clicked...
+// todoList.addEventListener("click", function(event) {
+//   var element = event.target;
 
-  // If that element is a button...
-  if (element.matches("button") === true) {
-    // Get its data-index value and remove the todo element from the list
-    var index = element.parentElement.getAttribute("data-index");
-    todos.splice(index, 1);
+//   // If that element is a button...
+//   if (element.matches("button") === true) {
+//     // Get its data-index value and remove the todo element from the list
+//     var index = element.parentElement.getAttribute("data-index");
+//     todos.splice(index, 1);
 
-    // Store updated todos in localStorage, re-render the list
-    storeTodos();
-    renderTodos();
-  }
-});
+//     // Store updated todos in localStorage, re-render the list
+//     storeTodos();
+//     renderTodos();
+//   }
+// });
+
+    // li.addEventListener("click", function(event) {
+
+    //   if (event.target.innerHTML !==questions[qCount].answer) {
+    //     event.stopPropagation();
+    //     console.log(questions[qCount].answer);
+    //   } else if  (event.target.innerHTML === questions[qCount].answer) {
+    //       event.stopPropagation();
+    //     console.log(questions[qCount].answer);
+    //   };
+    //   });
+
 
   //-----event listeners-------//
   answersEl.addEventListener("click", renderqa);
