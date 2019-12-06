@@ -33,32 +33,19 @@
 <form>
     <div class="form row justify-content-center">
         <div class="col-sm-6 md-6 text-center">
-            <div id="start-btn" class="hide">
-                <button type="button" class="btn btn-success btn-lg">Start Quiz</button>
+            <div id="start-btn">
+                <button value="Click" type="button" class="btn btn-success btn-lg">Start Quiz</button>
                 <p>Click the start button to begin your quiz. Your score will eb determined by how many questions you've answered with the time you've answered them.</p>
             </div>
         </div>
    </div>
-    <div class="form row">
-        <span id="questions"></span> <!----take out the ids on list. they are unnessesary-->
-      <ul id="answer-list list-group-flush">
-        <li id="0" >
-         <button type="button" class="btn btn-success btn-lg"></button>
-        </li>
-        <li id="1">
-        <button type="button" class="btn btn-success btn-lg"></button>
-        </li>
-        <li id="2">
-        <button type="button" class="btn btn-success btn-lg"></button>
-        </li>
-        <li id="3">
-        <button type="button" class="btn btn-success btn-lg"></button>
-        </li>
-        <li id="4">
-        <button type="button" class="btn btn-success btn-lg"></button>
-        </li>
+    <div id="qa" class="form row hide">
+        <span id="questions-asked"></span> 
+      <ul id="answers" class="list-group-flush">
+         <!-- <button type="button" class="btn btn-primary btn-lg"></button> -->
       </ul>
     </div>
+
 </form>
 </div>
 

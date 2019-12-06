@@ -1,40 +1,49 @@
 
 
+// ----use this as example for hiding the start btn and starting the next div------//
+var startbtnEl = document.querySelector("#start-btn");
+var qaEl = document.querySelector("#qa") 
+var questionsEl = document.querySelector("#questions-asked");
+var answersEl = document.getElementById("answers");
+// var liEl = docuemnt.getElementById()
+
+var qCount = 0;
+console.log(questions);
 
 
+// function startButton(event) {
 
+//     qaEl.classList.remove("hide");
+//     startbtnEl.classList.add("hide");
+//     renderqa();
+// };
 
-
-
-
-
-//----use this as example for hiding the start btn and starting the next div------//
-var startbtnEl = document.querySelector("#start-btn"); 
-var mouseEventsEl = document.querySelector("#click-events");
-var keyEventsEl = document.querySelector("#key-events");
-
-function toggleDisplay(event) {
-  var value = event.target.value;
-  if(value === "keydown") {
-    mouseEventsEl.classList.add("hide");
-    keyEventsEl.classList.remove("hide");
-  }
-  else {
-    mouseEventsEl.classList.remove("hide");
-    keyEventsEl.classList.add("hide");
-  }
-}
-
-
-//-----use this function as an example for dynamically moving through the question and answers--//
-function addPersonToList(event) { //creat my own function 
+startbtnEl.addEventListener("click", function(event){
   event.preventDefault();
-  var name = nameEl.value;
-  var li = document.createElement("li");//target my list
-  li.id = people.length;
-  li.innerHTML = name + " <button>edit</button>";//make this the [] of possible answers
-  people.push({ name: name });
-  peopleListEl.append(li);
+  qaEl.classList.remove("hide");
+  startbtnEl.classList.add("hide");
+  renderqa();
+});
+
+function renderqa() {
+  // Clear todoList element and update todoCountSpan
+  questionsEl.innerHTML = "";
+  answersEl.innerHTML = "";
+
+  // var span = document.createElement("span");
+  questionsEl.textContent = questions[qCount].title;
+
+  // Render a new li for each todo
+  for (var i = 0; i < questions[qCount].choices.length; i++) {
+    var li = document.createElement("li");
+    li.innerHTML = "<button>" + questions[qCount].choices[i] + "</button>";
+    answersEl.appendChild(li);
+
+
+  }
+qCount++;
 }
-//I am going to need a for loop to grab my + questions[questionindex] choices[i],
-// questions++
+
+answersEl.addEventListener("click", renderqa);
+
+
