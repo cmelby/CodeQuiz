@@ -15,19 +15,10 @@
     <!---begin by making a start quiz button note: this starts the count down timer-->
     <!--we will also need to creat a timer that is set to zero that is initialized when the start button is pushed-->
     <!---navigation option of view high score-->
-<div class="container">
-    <header>
-        <div class="row">
-            <div class="time">
-                <div id="time">
-                    0
-                </div>
-            </div>
-            <nav class="high-score" href="#">
-                view Highscore
-            </nav>
-        </div>
-    </header>
+<nav class="navbar navbar-light bg-light">
+<a id="high-score" class="navbar-brand" href="#">View HighScore</a>
+<div id="tremaining"></div>
+</nav> 
 <!---create multiple div sections that will be set to "hide" and displayed in the js file as none until triggered-->
 <div class="container">
 <form>
@@ -39,10 +30,10 @@
             </div>
         </div>
    </div>
-    <div id="qa" class="form row hide">
-        <span id="questions-asked"></span> 
-      <ul id="answers" class="list-group-flush">
+    <div id="qa" class="form row hide"><span id="questions-asked"></span> 
+      <ul id="answers">
          <!-- <button type="button" class="btn btn-primary btn-lg"></button> -->
+         <!-- class="list-group-flush" -->
       </ul>
     </div>
 

@@ -11,9 +11,6 @@ header {
     height: 600px;
 }
 
-#start-btn {
-   
-}
 
 .hide {
     display: none;
@@ -22,3 +19,4 @@ header {
 ol, ul {
 	list-style: none;
 }
+
