@@ -2,10 +2,10 @@
 
 // ----use this as example for hiding the start btn and starting the next div------//
 var startbtnEl = document.querySelector("#start-btn");
-var qaEl = document.querySelector("#qa") 
+var qaEl = document.querySelector("#qa")
 var questionsEl = document.querySelector("#questions-asked");
 var answersEl = document.getElementById("answers");
-
+var answerl = document.querySelector("ul")
 var qCount = 0;
 console.log(questions);
 
@@ -16,34 +16,39 @@ var timeLeft;
 
 var tremaningEl = document.getElementById("tremaining")
 
-  // // ------------set and calculate time ---------------------------
+//------create funciton to grab user input-----//
+var userForm = document.querySelector(".user-form");
+var userInput = document.querySelector("#user-input");
+var user = [];
 
-  function startTime () {
-    interval = setInterval( function() {
-        secondsElapsed++;
-        renderTimeLeft();
-    }, 1000);
-  };
-  function calcTimeLeft () {
-    var timeLeft;
-      timeLeft = totalSeconds - secondsElapsed;
-      return timeLeft;
-  }
-  function stopTimer() {
-      secondsElapsed = 0;
-      clearInterval(interval);
-  }   
-  function renderTimeLeft() {
-    tremaningEl.textContent = calcTimeLeft();
-    if (secondsElapsed >= totalSeconds) {
-      alert("Times up!");
-      stopTimer(); 
+// // ------------set and calculate time ---------------------------//
+
+function startTime() {
+  interval = setInterval(function () {
+    secondsElapsed++;
+    renderTimeLeft();
+  }, 1000);
+};
+function calcTimeLeft() {
+  var timeLeft;
+  timeLeft = totalSeconds - secondsElapsed;
+  return timeLeft;
+}
+function stopTimer() {
+  secondsElapsed = 0;
+  clearInterval(interval);
+}
+function renderTimeLeft() {
+  tremaningEl.textContent = calcTimeLeft();
+  if (secondsElapsed >= totalSeconds) {
+    alert("Times up!");
+    stopTimer();
     //   endGame(); //define this too!!
-      }
-  }   
+  }
+}
 
-  //-------start timer and trigger Q&A, timer calculation and render----//
-startbtnEl.addEventListener("click", function(event){
+//-------start timer and trigger Q&A, also start the calculation and render of the timer----//
+startbtnEl.addEventListener("click", function (event) {
   event.preventDefault();
   qaEl.classList.remove("hide");
   startbtnEl.classList.add("hide");
@@ -51,7 +56,7 @@ startbtnEl.addEventListener("click", function(event){
   startTime();
   renderTimeLeft();
 });
-
+//-------Render Questions and Answers----//
 function renderqa() {
   questionsEl.innerHTML = "";
   answersEl.innerHTML = "";
@@ -64,64 +69,62 @@ function renderqa() {
     answersEl.appendChild(li);
 
   }
+
   qCount++;
-  if (qCount > questions.length) {
-    storeUser();
+
+  console.log(qCount);
+  if (qCount >= questions.length) {
+    console.log("hello");
+    qaEl.classList.add("hide");
+    answersEl.classList.add("hide");
+    userForm.classList.remove("hide");
+
   }
+
 }
 
 
-//------create funciton to grab user input-----//
-var userForm = document.querySelector(".user-form");
-var userInput = document.querySelector("#user-input");
-var user = [];
+
+//------Checking answers----------------------------//
+answerl.addEventListener("click", function (event) {
+  event.stopPropagation();
+  if (event.target.innerHTML !== questions[qCount -1].answer) {
+    console.log(questions[qCount].answer);
+    console.log(event.target.innerHTML);
+    console.log("wrong");
+  } else if (event.target.innerHTML === questions[qCount -1].answer) {
+    console.log(questions[qCount].answer);
+    console.log("right")
+  };
+});
 
 //------store user imput-----//
 
 function storeUser() {
   // Stringify and set "user" key in localStorage to todos array
   localStorage.setItem("user", JSON.stringify(user));
+  console.log(JSON.stringify(user));
+  console.log(user);
 }
 
 // When form is submitted...
-userForm.addEventListener("submit", function(event) {
+userForm.addEventListener("submit", function (event) {
   event.preventDefault();
-
+  console.log("submit btn")
   var userText = userInput.value.trim();
   user.push(userText);
 
- 
+  storeUser();
 });
 
-//--store the answers clicked -------------------------//
+//------create funciton to grab user Answers-----//
+// var answerstorage = [];
 
-// // When a element inside of the todoList is clicked...
-// todoList.addEventListener("click", function(event) {
-//   var element = event.target;
-
-//   // If that element is a button...
-//   if (element.matches("button") === true) {
-//     // Get its data-index value and remove the todo element from the list
-//     var index = element.parentElement.getAttribute("data-index");
-//     todos.splice(index, 1);
-
-//     // Store updated todos in localStorage, re-render the list
-//     storeTodos();
-//     renderTodos();
-//   }
-// });
-
-    // li.addEventListener("click", function(event) {
-
-    //   if (event.target.innerHTML !==questions[qCount].answer) {
-    //     event.stopPropagation();
-    //     console.log(questions[qCount].answer);
-    //   } else if  (event.target.innerHTML === questions[qCount].answer) {
-    //       event.stopPropagation();
-    //     console.log(questions[qCount].answer);
-    //   };
-    //   });
+// //--------- Store user answers----------//
+// function storeAnswers () {
+//   localStorage.setItem("answer", JSON.stringify(answerstorage));
+// }
 
 
-  //-----event listeners-------//
-  answersEl.addEventListener("click", renderqa);
+// //-----event listeners-------//
+answersEl.addEventListener("click", renderqa);

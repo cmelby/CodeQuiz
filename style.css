@@ -6,14 +6,19 @@ header {
 }
 
 
-.main-content {
-    width: 1140px;
-    height: 600px;
+.container {
+    width: 1040px;
+    height: 400px;
+    padding: 50px;
 }
 
 
 .hide {
     display: none;
+}
+
+.form-row {
+    padding: 100px;
 }
 
 ol, ul {
