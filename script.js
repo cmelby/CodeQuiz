@@ -84,7 +84,6 @@ function renderqa() {
 }
 
 
-
 //------Checking answers----------------------------//
 answerl.addEventListener("click", function (event) {
   event.stopPropagation();
@@ -118,12 +117,7 @@ userForm.addEventListener("submit", function (event) {
 });
 
 //------create funciton to grab user Answers-----//
-// var answerstorage = [];
 
-// //--------- Store user answers----------//
-// function storeAnswers () {
-//   localStorage.setItem("answer", JSON.stringify(answerstorage));
-// }
 
 
 // //-----event listeners-------//
