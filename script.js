@@ -6,23 +6,23 @@ var qaEl = document.querySelector("#qa")
 var questionsEl = document.querySelector("#questions-asked");
 var answersEl = document.getElementById("answers");
 var answerl = document.querySelector("ul");
-
+var scoreEl = document.getElementById("your-score");
 var qCount = 0;
 console.log(questions);
 
-var totalSeconds = 60;
+var totalSeconds = 75;
 var secondsElapsed = 0;
 var interval;
 var timeLeft;
 
 var tremaningEl = document.getElementById("tremaining")
 
-//------create funciton to grab user input-----//
+//------User Input varibles-----//
 var userForm = document.querySelector(".user-form");
 var userInput = document.querySelector("#user-input");
 var user = [];
 
-//----store answers veribles--------//
+//----Answers array to store varibles--------//
 
 var storedAnswers = [];
 
@@ -48,7 +48,6 @@ function renderTimeLeft() {
   if (secondsElapsed >= totalSeconds) {
     alert("Times up!");
     stopTimer();
-    //   endGame(); //define this too!!
   }
 }
 
@@ -83,11 +82,12 @@ function renderqa() {
     qaEl.classList.add("hide");
     answersEl.classList.add("hide");
     userForm.classList.remove("hide");
-
+    storeAnswer();
+    getScore();
   }
-
+ 
 }
-//------ View high scores render -----//
+//------ Store Answers -----//
 
 function storeAnswer() {
   localStorage.setItem("answer", JSON.stringify(storedAnswers));
@@ -106,13 +106,35 @@ answerl.addEventListener("click", function (event) {
     console.log(questions[qCount -1].answer);
     console.log("right")
   };
-  
-  var userAnswer = event.target.innerHTML;
-  storedAnswers.push(userAnswer);
 
-  storeAnswer();
+  var userAnswer = event.target.innerHTML === questions[qCount -1].answer; 
+  if (userAnswer === true) {
+    storedAnswers.push(userAnswer); 
+  }
+  
 
 });
+
+//-------------Render Score to DOM-------------//
+function renderScore() {
+  scoreEl.innerHTML = "";
+  scoreEl.textContent = calScore;
+}
+
+
+//-------------Retreive score------------------//
+
+function getScore() {
+  var getAnswers = JSON.parse(localStorage.getItem("storedAnswers"));
+
+  if (getAnswers !== null) {
+    storedAnswers = getAnswers;
+    
+    var calScore = storeAnswer.length / 10;
+    calScore = Math.floor(calScore / 10);
+  }
+
+}
 
 //------store user imput-------------------------------------//
 
@@ -132,8 +154,6 @@ userForm.addEventListener("submit", function (event) {
 
   storeUser();
 });
-
-
 
 
 // //-----event listeners-------//

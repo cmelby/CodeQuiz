@@ -22,7 +22,6 @@
 <!--main container-->
 <div class="container">
 <form>
-  
     <div class="form row justify-content-center">
         <div class="col-sm-6 md-6 text-center">
             <div id="start-btn"> <!--start button-->
@@ -32,32 +31,29 @@
         </div>
    </div>
      <!--Questions & answers -->
-    <div id="qa" class="form row hide"><h2 id="questions-asked"></h2> 
-    </div>
-    <div>
-      <ul id="answers">
-         <!-- <button type="button" class="btn btn-primary btn-lg"></button> -->
-         <!-- class="list-group-flush" -->
-      </ul>
-      <div class="right-wrong"></div>
+    <div id="qa" class="form row hide"><h2 id="questions-asked"></h2> </div>
+        <div>
+        <ul id="answers">
+        </ul>
+        <div class="right-wrong"></div>
     </div>
 </form>
    <!---user input--->
 <form class="user-form hide">
     <div class="form row justify-content-center">
         <div class="col-sm-6 md-6 text-center">
+            <h2>All done!</h2>
+            <p>You did great!
+            Enter your inittils to 
+            save your score.
+            </p>
+            <div class="your-score"></div>
             <input type="text" placeholder="Enter Initials" name="user-input" id="user-input" />
-            <button type="submit" id="submit">submit</button>
+            <button class='btn-primary btn-sm' type="submit" id="submit">submit</button>
         </div>
     </div>
 </form>
-
 </div>
-
-
-
-
-
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="questions.js"></script>
