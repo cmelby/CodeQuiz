@@ -5,7 +5,8 @@ var startbtnEl = document.querySelector("#start-btn");
 var qaEl = document.querySelector("#qa")
 var questionsEl = document.querySelector("#questions-asked");
 var answersEl = document.getElementById("answers");
-var answerl = document.querySelector("ul")
+var answerl = document.querySelector("ul");
+
 var qCount = 0;
 console.log(questions);
 
@@ -20,6 +21,10 @@ var tremaningEl = document.getElementById("tremaining")
 var userForm = document.querySelector(".user-form");
 var userInput = document.querySelector("#user-input");
 var user = [];
+
+//----store answers veribles--------//
+
+var storedAnswers = [];
 
 // // ------------set and calculate time ---------------------------//
 
@@ -56,7 +61,7 @@ startbtnEl.addEventListener("click", function (event) {
   startTime();
   renderTimeLeft();
 });
-//-------Render Questions and Answers----//
+//-------Render Questions and Answers----------------------------------//
 function renderqa() {
   questionsEl.innerHTML = "";
   answersEl.innerHTML = "";
@@ -82,31 +87,43 @@ function renderqa() {
   }
 
 }
+//------ View high scores render -----//
 
+function storeAnswer() {
+  localStorage.setItem("answer", JSON.stringify(storedAnswers));
+  console.log(JSON.stringify(storedAnswers));
+  console.log(storedAnswers);
+}
 
 //------Checking answers----------------------------//
 answerl.addEventListener("click", function (event) {
   event.stopPropagation();
   if (event.target.innerHTML !== questions[qCount -1].answer) {
-    console.log(questions[qCount].answer);
+    console.log(questions[qCount -1].answer);
     console.log(event.target.innerHTML);
     console.log("wrong");
   } else if (event.target.innerHTML === questions[qCount -1].answer) {
-    console.log(questions[qCount].answer);
+    console.log(questions[qCount -1].answer);
     console.log("right")
   };
+  
+  var userAnswer = event.target.innerHTML;
+  storedAnswers.push(userAnswer);
+
+  storeAnswer();
+
 });
 
-//------store user imput-----//
+//------store user imput-------------------------------------//
 
 function storeUser() {
-  // Stringify and set "user" key in localStorage to todos array
+  // Stringify and set "user" key in localStorage to users array
   localStorage.setItem("user", JSON.stringify(user));
   console.log(JSON.stringify(user));
   console.log(user);
 }
 
-// When form is submitted...
+// When form is submitted---------------------------------//
 userForm.addEventListener("submit", function (event) {
   event.preventDefault();
   console.log("submit btn")
@@ -116,9 +133,12 @@ userForm.addEventListener("submit", function (event) {
   storeUser();
 });
 
-//------create funciton to grab user Answers-----//
 
 
 
 // //-----event listeners-------//
 answersEl.addEventListener("click", renderqa);
+
+
+//----next steps -------??
+//hide and show score div.....
