@@ -3,7 +3,7 @@
 
 ## Summary 
 
-The task in this project was to generate a quiz leveraging javascript to dynamically generate questions and answers located in an array and alter the html on the page. As well as store the ansers and user information to local storage for later recal. 
+The task in this project was to generate a quiz leveraging javascript to dynamically generate questions and answers located in an array and alter the html on the page. As well as store the answers along with the user information to local storage for later recal. 
 
 ## Site Picture 
 ![alt text](code-quiz.png)
@@ -22,7 +22,7 @@ The task in this project was to generate a quiz leveraging javascript to dynamic
 
 ## Code Snippet
 
-The bulk of this assigment was in generating the questions and answers to the page through the block of code listed figured bellow. 
+The bulk of this assigment was in generating the questions and answers to the page through the block of code listed figured bellow. Rendering the questions in the event listener listed below this section in the javascript file would then iterate through all the questions and dynamically insert a button corresponding to the answer in the same array as well as feature the bootstrap class placed on it.
 ```js
 function renderqa() {
   questionsEl.innerHTML = "";
