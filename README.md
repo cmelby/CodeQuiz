@@ -6,7 +6,8 @@
 The task in this project was to generate a quiz leveraging javascript to dynamically generate questions and answers located in an array and alter the html on the page. As well as store the answers along with the user information to local storage for later recal. 
 
 ## Site Picture 
-![alt text](code-quiz.png)
+![site](codeQuiz.webp)
+
   
  
 
